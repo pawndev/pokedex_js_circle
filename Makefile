@@ -33,17 +33,11 @@ lint:
 start:
 	npm start
 
-<<<<<<< Updated upstream
-=======
 start-dev:
 	npm start:dev
 
->>>>>>> Stashed changes
 build:
 	npm run build
-
-run:
-	npm run run
 
 clean:
 	rm -Rf build
