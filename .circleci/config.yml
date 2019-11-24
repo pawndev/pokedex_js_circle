@@ -9,13 +9,13 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-        name: Build Docker image
-        command: docker build -t $IMAGE_NAME:latest .
+          name: Build Docker image
+          command: docker build -t $IMAGE_NAME:latest .
       - run:
-        name: Publish Docker Image to Docker Hub
-        command: |
-          echo "$DOCKERHUB_TOKEN" | docker login -u lesspion --password-stdin
-          docker push $IMAGE_NAME:latest
+          name: Publish Docker Image to Docker Hub
+          command: |
+            echo "$DOCKERHUB_TOKEN" | docker login -u lesspion --password-stdin
+            docker push $IMAGE_NAME:latest
 
   launch_tests:
     docker:
