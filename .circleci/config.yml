@@ -16,6 +16,7 @@ jobs:
         command: |
           echo "$DOCKERHUB_TOKEN" | docker login -u lesspion --password-stdin
           docker push $IMAGE_NAME:latest
+
   launch_tests:
     docker:
       - image: circleci/node:10.16.0
