@@ -9,13 +9,18 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-        name: Build Docker image
-        command: docker build -t $IMAGE_NAME:latest .
-      -run:
-        name: Publish Docker Image to Docker Hub
-        command: |
-          echo "$DOCKERHUB_TOKEN" | docker login -u lesspion --password-stdin
-          docker push $IMAGE_NAME:latest
+          name: Build Docker image
+          command: docker build -t $IMAGE_NAME:latest .
+      - run:
+          name: Publish Docker Image to Docker Hub
+          command: |
+            echo "$DOCKERHUB_TOKEN" | docker login -u lesspion --password-stdin
+            docker push $IMAGE_NAME:latest
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+
   launch_tests:
     docker:
       - image: circleci/node:10.16.0
@@ -47,7 +52,6 @@ workflows:
   deploy:
     jobs:
       - deploy:
-          context: production
           filters:
             branches:
               only: master

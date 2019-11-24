@@ -33,11 +33,11 @@ lint:
 start:
 	npm start
 
+start:
+	npm start:dev
+
 build:
 	npm run build
-
-run:
-	npm run run
 
 clean:
 	rm -Rf build

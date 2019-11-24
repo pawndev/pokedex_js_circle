@@ -130,7 +130,10 @@ server.get('/pokemon', pokedexOpts, listAllHandler);
 server.get('/pokemon/id/:id', pokemonOpts, getPokemonById);
 server.get('/pokemon/name/:name', pokemonOpts, getPokemonByName);
 
-server.listen(5000, err => {
+const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
+const host = process.env.HOST || '0.0.0.0';
+
+server.listen(port, host, err => {
   if (err) throw err;
-  console.log(`server listening on port 5000`);
+  console.log(`server listening on port ${port}`);
 });
