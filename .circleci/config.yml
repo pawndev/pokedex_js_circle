@@ -16,6 +16,10 @@ jobs:
           command: |
             echo "$DOCKERHUB_TOKEN" | docker login -u lesspion --password-stdin
             docker push $IMAGE_NAME:latest
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 
   launch_tests:
     docker:
