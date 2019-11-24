@@ -59,3 +59,8 @@ workflows:
             branches:
               ignore:
                 - master
+      - deploy:
+          context: production
+          filters:
+            branches:
+              ignore: master
