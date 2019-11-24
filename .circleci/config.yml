@@ -52,7 +52,6 @@ workflows:
   deploy:
     jobs:
       - deploy:
-          context: production
           filters:
             branches:
               only: master
@@ -63,7 +62,3 @@ workflows:
             branches:
               ignore:
                 - master
-      - deploy:
-          filters:
-            branches:
-              ignore: master
